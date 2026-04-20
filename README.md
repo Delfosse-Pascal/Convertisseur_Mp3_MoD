@@ -12,6 +12,17 @@ Bibliothèque audio locale avec conversion automatique des trackers (.mod/.xm/.i
 - `thumbs/` — miniatures waveform (généré)
 - `data/audio_index.json` + `audio_index.js` — index (généré)
 
+## Intégrations externes (index.html)
+
+Ressources chargées depuis `https://filedn.eu/llN3kr5vmyEBPIWCwFj3O6h/Site_Web/` :
+- Favicons : `favicondepascal.png` + `favicondepascal.ico`
+- CSS : `style.css` (distant) + `basedusite.css`
+- JS : `script.js`, `menu.js` (defer, injecte dans `<header></header>`), `couleurs.js` (fondu pastel)
+- Menu social : Pinterest, Flickr, Tumblr, X, YouTube (`<nav class="social-menu">`)
+- `<link rel="canonical">` pointe vers la racine du dépôt distant
+
+Ordre CSS : distant chargé avant `style.css` local → overrides locaux prioritaires.
+
 ## Prérequis
 
 **ffmpeg** + **ffprobe** dans le PATH, idéalement build avec `libopenmpt` pour les trackers.
