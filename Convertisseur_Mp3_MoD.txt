@@ -1,0 +1,156 @@
+PROMPT OPTIMISÉ — CONVERTISSEUR + SITE AUDIO LOCAL
+
+Créer une application complète composée de deux modules distincts mais interconnectés :
+
+🧠 MODULE 1 — ANALYSE + CONVERSION (PYTHON)
+🎯 Objectif
+
+Développer un script Python autonome capable de :
+
+🔍 Analyse des dossiers
+
+Parcourir récursivement une arborescence de type :
+
+Audio_Library/
+  ├── tiroir01/
+  │     ├── sous-tiroirA/
+  │     ├── fichier.mod
+  │     ├── fichier.mp3
+Détecter automatiquement les fichiers audio :
+.mod, .xm, .it, .s3m (priorité)
+.mp3, .wav, .ogg
+⚠️ Correction importante
+
+Un fichier .mod n’est pas un simple audio compressé. C’est un format tracker (type ProTracker).
+➡️ Tu ne peux pas le convertir correctement sans moteur audio spécifique.
+
+🔄 Conversion obligatoire
+Utiliser :
+ffmpeg (si supporté)
+OU librairie spécialisée (ex : libopenmpt)
+
+Convertir automatiquement :
+
+.mod → .wav → .mp3
+Paramètres :
+44.1 kHz
+stéréo
+192 kbps
+📦 Génération de données
+
+Créer un fichier JSON global :
+
+data/audio_index.json
+
+Contenu :
+
+{
+  "tiroir01": {
+    "sous-tiroirA": [
+      {
+        "nom": "track01",
+        "chemin": "tiroir01/sous-tiroirA/track01.mp3",
+        "original": "track01.mod",
+        "taille": "...",
+        "duree": "...",
+        "miniature": "thumbs/track01.jpg"
+      }
+    ]
+  }
+}
+🖼️ Miniatures audio
+Générer automatiquement :
+waveform (onde audio)
+OU image générique avec nom du fichier
+⚙️ Mise à jour intelligente
+Détection des changements :
+nouveaux fichiers
+fichiers supprimés
+Ne pas retraiter inutilement :
+hash ou date de modification
+Pas de duplication
+🌐 MODULE 2 — SITE WEB AUDIO (HTML + CSS + JS)
+🎯 Objectif
+
+Créer un site 100% statique, fonctionnant localement sans serveur.
+
+📁 Structure
+/site/
+  index.html
+  /data/audio_index.json
+  /audio/
+  /thumbs/
+🧭 Interface principale
+📦 Index visuel
+Afficher les tiroirs comme des dossiers cliquables
+Navigation fluide :
+tiroir → sous-tiroir → fichiers
+🎵 Lecture audio
+🎯 Au clic sur miniature :
+Lecture immédiate
+🎛️ Lecteur complet :
+lecture / pause
+barre de progression
+volume
+temps écoulé
+playlist automatique
+
+⚠️ Correction :
+➡️ Pas de “plein écran vidéo” pour de l’audio → inutile techniquement
+➡️ “qualité sélectionnable” n’a aucun sens en local MP3 → à supprimer
+
+🖼️ Bandeau dynamique
+
+Charger images depuis :
+
+/images/
+Banderole horizontale :
+défilement lent automatique
+boucle infinie
+⚡ Performance
+Lazy loading
+Préchargement du prochain audio
+Cache navigateur
+🔁 SYNCHRONISATION AUTOMATIQUE
+🎯 Fonctionnement
+Lancer Python → reconstruit :
+JSON
+miniatures
+conversions
+Le site HTML :
+recharge dynamiquement le JSON
+🧱 CONTRAINTES TECHNIQUES
+Python
+Analyse fichiers
+Conversion audio
+Génération JSON
+Génération miniatures
+Frontend
+HTML
+CSS
+JavaScript pur (pas de framework lourd)
+❌ Interdictions
+PHP
+serveur web obligatoire
+base de données
+💡 BONUS (RECOMMANDÉ)
+🔎 Barre de recherche audio
+🎼 tri par durée / nom
+📂 breadcrumb (fil d’Ariane)
+🔁 lecture continue automatique
+🎨 thème sombre / clair
+⚠️ PROBLÈMES DANS TON CAHIER DES CHARGES (CORRIGÉS)
+❌ Mélange audio / vidéo
+→ incohérent → corrigé
+❌ Conversion MOD naïve
+→ techniquement faux → corrigé avec moteur audio
+❌ “qualité sélectionnable” en local
+→ inutile → supprimé
+❌ UI trop ambitieuse sans séparation backend
+→ restructuré en 2 modules
+🧾 RÉSULTAT ATTENDU
+Script Python autonome
+Site HTML fonctionnel en double-clic
+Conversion automatique .MOD → .MP3
+Navigation propre par dossiers
+Lecture audio fluide
