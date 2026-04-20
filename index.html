@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Convertisseur MP3 MoD - Bibliothèque</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+<header class="top">
+  <div class="brand">
+    <span class="logo">♪</span>
+    <h1>Convertisseur MP3 MoD</h1>
+  </div>
+  <div class="controls">
+    <input id="search" type="search" placeholder="Rechercher un titre...">
+    <select id="sort">
+      <option value="name">Tri: nom</option>
+      <option value="duration">Tri: durée</option>
+      <option value="size">Tri: taille</option>
+    </select>
+    <button id="theme-toggle" title="Thème clair/sombre">☾</button>
+  </div>
+</header>
+
+<section class="banner" id="banner"></section>
+
+<nav class="breadcrumb" id="breadcrumb"></nav>
+
+<main id="view" class="grid"></main>
+
+<footer class="player" id="player" hidden>
+  <img id="p-thumb" alt="">
+  <div class="p-info">
+    <div id="p-title" class="p-title">—</div>
+    <div id="p-path" class="p-path"></div>
+  </div>
+  <div class="p-controls">
+    <button id="p-prev" title="Précédent">⏮</button>
+    <button id="p-play" title="Lecture/Pause">▶</button>
+    <button id="p-next" title="Suivant">⏭</button>
+  </div>
+  <div class="p-bar">
+    <span id="p-current">0:00</span>
+    <input id="p-seek" type="range" min="0" max="1000" value="0">
+    <span id="p-total">0:00</span>
+  </div>
+  <div class="p-vol">
+    <span>🔊</span>
+    <input id="p-volume" type="range" min="0" max="100" value="80">
+  </div>
+  <audio id="audio" preload="metadata"></audio>
+</footer>
+
+<script src="data/audio_index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

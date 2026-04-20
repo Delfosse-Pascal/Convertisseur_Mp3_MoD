@@ -26,3 +26,17 @@
 *.wmv
 *.webm
 *.flv
+
+# Trackers
+*.xm
+*.it
+*.s3m
+
+# Sorties générées
+/audio/
+/thumbs/
+/data/hash_cache.json
+
+# Python
+__pycache__/
+*.pyc
